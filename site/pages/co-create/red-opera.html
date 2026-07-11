@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#b31219" />
+  <link rel="icon" href="../../assets/icons/mark.svg" type="image/svg+xml" />
+  <title>主题小戏共创 · 红色戏曲 | 数智·戏曲润心</title>
+  <meta name="description" content="输入一个人物或历史主题,生成一段包含角色、唱白与舞台提示的红色小戏排演草稿。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../css/style.css" />
+</head>
+<body>
+<nav class="topnav" id="topnav">
+  <div class="topnav-inner">
+    <a class="brand" href="../../index.html">
+      <span class="brand-mark">戏</span>
+      <span class="brand-text">数智·戏曲润心</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../../index.html">首页</a></li>
+      <li><a href="../ai-opera.html">共创工坊</a></li>
+      <li><a href="../characters.html">数智人物</a></li>
+      <li><a href="../kids.html">儿童专区</a></li>
+      <li><a href="../elderly.html">老人陪伴</a></li>
+      <li><a class="active" href="../red-opera.html">红色戏曲</a></li>
+      <li><a href="../exchange.html">文明互鉴</a></li>
+      <li><a href="../live.html">线下融合</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="展开菜单">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<header class="page-hero">
+  <div class="page-hero-bg" style="background-image:url('../../assets/images/illustrations/red-opera.webp')"></div>
+  <div class="hero-overlay"></div>
+  <div class="container page-hero-inner">
+    <div class="hero-badge">红色戏曲 · 共创</div>
+    <h1 class="hero-title"><span class="t-1">主题小戏共创</span></h1>
+    <p class="hero-subtitle">输入人物或历史主题,生成可朗读、可修改、可排演的小戏草稿</p>
+  </div>
+</header>
+
+<section class="section section-red">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eyebrow">如何使用</div>
+      <h2 class="section-title">三步完成一段红色小戏</h2>
+    </div>
+    <div class="co-create-steps">
+      <div class="co-step">
+        <div class="co-step-num">1</div>
+        <h4>输入关键词</h4>
+        <p>输入一个你想表达的人物(如"焦裕禄")、事件(如"长征")或主题(如"抗疫"),系统会据此梳理角色与场景。</p>
+      </div>
+      <div class="co-step">
+        <div class="co-step-num">2</div>
+        <h4>生成草稿</h4>
+        <p>系统调用生成能力,产出一段含人物、场景、唱白与舞台提示的排演草稿。本地版兜底确保无网也能用。</p>
+      </div>
+      <div class="co-step">
+        <div class="co-step-num">3</div>
+        <h4>复核与排演</h4>
+        <p>生成内容仍需由戏曲教师或指导人员<strong>复核事实与口径</strong>,确认后再进入线下微课堂或社区展演。</p>
+      </div>
+    </div>
+
+    <div class="red-ai-box">
+      <div class="red-ai-head">
+        <div class="red-card-num">叁</div>
+        <h3>红色小戏生成器</h3>
+      </div>
+      <p class="red-ai-intro">输入一个人物或历史主题,形成一段包含角色、唱白与舞台提示的排演草稿。内容生成后仍需由指导教师复核。</p>
+      <div class="red-ai-input">
+        <input id="redInput" type="text" placeholder="例:焦裕禄 / 长征 / 抗疫 / 脱贫攻坚" />
+        <button id="redGenBtn" class="btn btn-primary">创作一段</button>
+      </div>
+      <div class="red-ai-result" id="redResult" aria-live="polite"></div>
+    </div>
+
+    <div class="red-tips">
+      <div class="red-tip">
+        <div class="red-tip-icon">!</div>
+        <p>关键词建议具体到一个<strong>人物</strong>(如"雷锋")或<strong>事件</strong>(如"两弹一星"),生成效果更聚焦。</p>
+      </div>
+      <div class="red-tip">
+        <div class="red-tip-icon">!</div>
+        <p>唱白遵循"以情带声、声情并茂"的戏曲原则,排演时可由专业老师指导行腔与身段。</p>
+      </div>
+      <div class="red-tip">
+        <div class="red-tip-icon">!</div>
+        <p>历史事实由生成模型参考公开材料;实际用于展演前,请<strong>务必核对事实与口径</strong>。</p>
+      </div>
+    </div>
+
+    <div class="back-row">
+      <a class="btn btn-ghost" href="../red-opera.html">← 返回红色戏曲</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand"><span class="brand-mark">戏</span><span>数智·戏曲润心</span></div>
+        <p class="footer-desc">以中华优秀传统戏曲为内核,以数字工具拓展基层文化服务的参与方式。</p>
+        <div class="footer-political">
+          <span class="ppill">传统文化活化</span><span class="ppill">数智赋能</span><span class="ppill">基层实践</span><span class="ppill">文明互鉴</span>
+        </div>
+      </div>
+      <div>
+        <h5>平台入口</h5>
+        <ul>
+          <li><a href="../../index.html">戏曲共创工坊</a></li>
+          <li><a href="../kids.html">儿童戏曲知识专区</a></li>
+          <li><a href="../elderly.html">老人陪伴式戏曲演员</a></li>
+          <li><a href="../red-opera.html">红色戏曲传唱</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>项目档案</h5>
+        <ul>
+          <li>类型:暑期社会实践</li>
+          <li>阵地:新时代文明实践站</li>
+          <li>形态:线上体验 + 线下微课堂</li>
+          <li>版本:参赛展示与试点体验版</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 数智·戏曲润心 项目组 · 让传统文化在当代生活中自然生长</p>
+      <p class="footer-tech">在线服务通过安全接口调用;未联网时仍可使用本地内容完成主要体验。</p>
+    </div>
+  </div>
+</footer>
+<div class="global-player" id="globalPlayer" hidden>
+  <div class="gp-title" id="gpTitle">正在播放</div>
+  <button class="gp-toggle" id="gpToggle" aria-label="播放/暂停">
+    <svg viewBox="0 0 24 24" id="gpPlayIcon"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+    <svg viewBox="0 0 24 24" id="gpPauseIcon" hidden><path d="M6 5h4v14H6zM14 5h4v14h-4z" fill="currentColor"/></svg>
+  </button>
+  <button class="gp-close" id="gpClose" aria-label="关闭">×</button>
+  <audio id="gpAudio"></audio>
+</div>
+<script src="../../js/shared.js"></script>
+<script src="../../js/red-page.js"></script>
+</body>
+</html>

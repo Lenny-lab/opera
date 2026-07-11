@@ -1,0 +1,46 @@
+[
+  {
+    "id": "jingju",
+    "genre": "京剧",
+    "title": "贵妃醉酒",
+    "audio": "sample-jingju.mp3",
+    "keywords": [
+      "京剧",
+      "贵妃",
+      "醉酒"
+    ]
+  },
+  {
+    "id": "yuju",
+    "genre": "豫剧",
+    "title": "花木兰",
+    "audio": "sample-yuju.mp3",
+    "keywords": [
+      "豫剧",
+      "花木兰",
+      "木兰"
+    ]
+  },
+  {
+    "id": "yueju",
+    "genre": "越剧",
+    "title": "红楼梦",
+    "audio": "sample-yueju.mp3",
+    "keywords": [
+      "越剧",
+      "红楼梦",
+      "林妹妹"
+    ]
+  },
+  {
+    "id": "red-jingju",
+    "genre": "红色京剧",
+    "title": "沙家浜·智斗",
+    "audio": "sample-red-jingju.mp3",
+    "keywords": [
+      "红色",
+      "沙家浜",
+      "智斗"
+    ]
+  }
+]

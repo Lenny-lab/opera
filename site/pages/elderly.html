@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#b31219" />
+  <link rel="icon" href="../assets/icons/mark.svg" type="image/svg+xml" />
+  <title>长者陪伴听戏 | 数智·戏曲润心</title>
+  <meta name="description" content="大字、高对比、语音优先的戏曲点播、戏词接龙与跟唱体验。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<nav class="topnav" id="topnav">
+  <div class="topnav-inner">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark">戏</span>
+      <span class="brand-text">数智·戏曲润心</span>
+    </a>
+    <ul class="nav-links">
+      <li><a class="" href="../index.html">首页</a></li>
+      <li><a class="" href="../pages/ai-opera.html">共创工坊</a></li>
+      <li><a class="" href="../pages/characters.html">数智人物</a></li>
+      <li><a class="" href="../pages/kids.html">儿童专区</a></li>
+      <li><a class="active" href="../pages/elderly.html">老人陪伴</a></li>
+      <li><a class="" href="../pages/red-opera.html">红色戏曲</a></li>
+      <li><a class="" href="../pages/exchange.html">文明互鉴</a></li>
+      <li><a class="" href="../pages/live.html">线下融合</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="展开菜单">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<header class="page-hero">
+  <div class="page-hero-bg" style="background-image:url('../assets/images/illustrations/elderly-companion.webp')"></div>
+  <div class="hero-overlay"></div>
+  <div class="container page-hero-inner">
+    <div class="hero-badge">长者陪伴听戏</div>
+    <h1 class="hero-title"><span class="t-1">陪您听戏，也陪您聊戏</span></h1>
+    <p class="hero-subtitle">大字、高对比、语音优先，让熟悉的唱腔更容易找到。</p>
+  </div>
+</header>
+<section class="section section-warm"><div class="container"><div class="elderly-grid"><div class="elderly-visual"><img src="../assets/images/illustrations/elderly-companion.webp" alt="两位长者在家中使用平板欣赏戏曲" loading="lazy"></div><div class="elderly-mock"><div class="elderly-header"><div class="elderly-time">9:42</div><div class="elderly-battery">● 88%</div></div><div class="elderly-greeting">今天想听哪一段？</div><div class="elderly-genres"><button class="elderly-btn" data-audio="sample-jingju.mp3" data-label="京剧《贵妃醉酒》">京剧</button><button class="elderly-btn" data-audio="sample-yuju.mp3" data-label="豫剧《花木兰》">豫剧</button><button class="elderly-btn" data-audio="sample-yueju.mp3" data-label="越剧《红楼梦》">越剧</button><button class="elderly-btn" data-audio="sample-huangmei.mp3" data-label="黄梅戏《天仙配》">黄梅戏</button></div><div class="elderly-info" id="elderlyInfo" aria-live="polite">点击剧种按钮开始听戏</div><button class="elderly-voice" id="elderlyVoice"><div class="mic-icon">🎙</div><div>语音点戏</div></button><div class="elderly-mode">适老模式 · 大字版</div></div></div><div class="companion-grid"><div class="red-card"><h4>戏词接龙</h4><p id="lyricsLine">系统：我唱“刘大哥讲话理太偏”，您接下一句。</p><button class="btn btn-primary" id="lyricsBtn">换一句</button></div><div class="red-card"><h4>跟唱速度</h4><p>根据自己的节奏选择播放速度，跟随熟悉唱段慢慢练习。</p><div class="playback-speed" role="group" aria-label="播放速度"><button class="btn btn-ghost speed-btn" data-speed="0.75">慢速</button><button class="btn btn-primary speed-btn" data-speed="1">原速</button></div><p class="speed-status" id="speedStatus" aria-live="polite">当前：原速</p></div></div></div></section>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand"><span class="brand-mark">戏</span><span>数智·戏曲润心</span></div>
+        <p class="footer-desc">以中华优秀传统戏曲为内核，以数字工具拓展基层文化服务的参与方式。</p>
+        <div class="footer-political">
+          <span class="ppill">传统文化活化</span><span class="ppill">数智赋能</span><span class="ppill">基层实践</span><span class="ppill">文明互鉴</span>
+        </div>
+      </div>
+      <div>
+        <h5>平台入口</h5>
+        <ul>
+          <li><a href="../pages/ai-opera.html">戏曲共创工坊</a></li>
+          <li><a href="../pages/kids.html">儿童戏曲知识专区</a></li>
+          <li><a href="../pages/elderly.html">老人陪伴式戏曲演员</a></li>
+          <li><a href="../pages/red-opera.html">红色戏曲传唱</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>项目档案</h5>
+        <ul>
+          <li>类型：暑期社会实践</li>
+          <li>阵地：新时代文明实践站</li>
+          <li>形态：线上体验 + 线下微课堂</li>
+          <li>版本：参赛展示与试点体验版</li>
+          <li><a href="../pages/notice.html">内容与使用说明</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 数智·戏曲润心 项目组 · 让传统文化在当代生活中自然生长</p>
+      <p class="footer-tech">在线服务通过安全接口调用；未联网时仍可使用本地内容完成主要体验。</p>
+    </div>
+  </div>
+</footer>
+<div class="global-player" id="globalPlayer" hidden>
+  <div class="gp-title" id="gpTitle">正在播放</div>
+  <button class="gp-toggle" id="gpToggle" aria-label="播放/暂停">
+    <svg viewBox="0 0 24 24" id="gpPlayIcon"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+    <svg viewBox="0 0 24 24" id="gpPauseIcon" hidden><path d="M6 5h4v14H6zM14 5h4v14h-4z" fill="currentColor"/></svg>
+  </button>
+  <button class="gp-close" id="gpClose" aria-label="关闭">×</button>
+  <audio id="gpAudio"></audio>
+</div>
+<script src="../js/shared.js"></script>
+<script src="../js/elderly-page.js"></script>
+</body>
+</html>

@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#b31219" />
+  <link rel="icon" href="../assets/icons/mark.svg" type="image/svg+xml" />
+  <title>戏曲共创工坊 | 数智·戏曲润心</title>
+  <meta name="description" content="说出一个人物或故事，创作可朗读、可保存、可继续修改的戏曲小片段。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<nav class="topnav" id="topnav">
+  <div class="topnav-inner">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark">戏</span>
+      <span class="brand-text">数智·戏曲润心</span>
+    </a>
+    <ul class="nav-links">
+      <li><a class="" href="../index.html">首页</a></li>
+      <li><a class="active" href="../pages/ai-opera.html">共创工坊</a></li>
+      <li><a class="" href="../pages/characters.html">数智人物</a></li>
+      <li><a class="" href="../pages/kids.html">儿童专区</a></li>
+      <li><a class="" href="../pages/elderly.html">老人陪伴</a></li>
+      <li><a class="" href="../pages/red-opera.html">红色戏曲</a></li>
+      <li><a class="" href="../pages/exchange.html">文明互鉴</a></li>
+      <li><a class="" href="../pages/live.html">线下融合</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="展开菜单">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<header class="page-hero">
+  <div class="page-hero-bg" style="background-image:url('../assets/images/illustrations/hero-stage.webp')"></div>
+  <div class="hero-overlay"></div>
+  <div class="container page-hero-inner">
+<div class="hero-badge">戏曲共创工坊</div>
+    <h1 class="hero-title"><span class="t-1">把你的故事，写成一段小戏</span></h1>
+    <p class="hero-subtitle">选题构思 · 唱白创作 · 语音朗读 · 保存分享</p>
+  </div>
+</header>
+<section class="section"><div class="container">
+  <div class="ai-opera-card">
+    <div class="ai-opera-input">
+      <div class="input-label">
+        <span class="label-dot"></span>
+        <span>写下人物、故事或想表达的心情</span>
+      </div>
+      <div class="input-row">
+        <input id="aiInput" type="text" placeholder="例：写一段老人重阳节思念家乡的京剧 / 红色抗疫小戏 / 给孩子的花木兰短剧" />
+        <button id="aiSendBtn" class="btn btn-primary btn-send"><span>生成小戏</span><span class="btn-arrow">→</span></button>
+      </div>
+      <div class="quick-tags">
+        <span class="tag-label">快速体验：</span>
+        <button class="tag" data-q="京剧贵妃醉酒">京剧·贵妃醉酒</button>
+        <button class="tag" data-q="豫剧花木兰">豫剧·花木兰</button>
+        <button class="tag" data-q="越剧红楼梦">越剧·红楼梦</button>
+        <button class="tag" data-q="写一段老人重阳节思念家乡">重阳·老生思乡</button>
+        <button class="tag" data-q="红色沙家浜智斗">红色·沙家浜</button>
+      </div>
+      <div class="ai-status-line" id="aiStatus"></div>
+    </div>
+    <div class="ai-opera-result">
+      <div class="result-empty" id="resultEmpty">
+        <div class="empty-icon">听</div>
+        <p>输入想法后点击“生成小戏”。<br /><span class="muted">系统会整理剧种、人物、唱白和舞台提示；你可以朗读、保存或继续换一个版本。</span></p>
+      </div>
+      <div class="result-active" id="resultActive" hidden>
+        <div class="result-row">
+          <div class="result-meta">
+            <div class="result-genre" id="resultGenre"></div>
+            <h3 class="result-title" id="resultTitle"></h3>
+            <p class="result-desc" id="resultDesc"></p>
+            <div class="result-tags" id="resultTags"></div>
+          </div>
+          <div class="result-visual">
+            <div class="visual-frame">
+              <div class="visual-glow"></div>
+              <div class="visual-character" id="visualCharacter">戏</div>
+              <div class="visual-status">戏曲人物 · 候场中</div>
+            </div>
+          </div>
+        </div>
+        <div class="audio-player">
+          <button class="play-btn" id="playBtn" aria-label="播放/暂停">
+            <svg viewBox="0 0 24 24" class="play-icon" id="playIcon"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+            <svg viewBox="0 0 24 24" class="pause-icon" id="pauseIcon" hidden><path d="M6 5h4v14H6zM14 5h4v14h-4z" fill="currentColor"/></svg>
+          </button>
+          <div class="player-info">
+            <div class="player-title" id="playerTitle">—</div>
+            <div class="player-bar"><div class="player-fill" id="playerFill"></div></div>
+            <div class="player-time"><span id="curTime">0:00</span><span id="durTime">0:00</span></div>
+          </div>
+          <audio id="aiAudio" preload="metadata"></audio>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sample-grid page-sample-grid">
+    <div class="sample-card" data-q="京剧贵妃醉酒" data-audio="sample-jingju.mp3">
+      <div class="sample-genre">京剧</div><div class="sample-title">贵妃醉酒</div><div class="sample-line">海岛冰轮初转腾</div>
+    </div>
+    <div class="sample-card" data-q="豫剧花木兰" data-audio="sample-yuju.mp3">
+      <div class="sample-genre">豫剧</div><div class="sample-title">花木兰</div><div class="sample-line">刘大哥讲话理太偏</div>
+    </div>
+    <div class="sample-card" data-q="越剧红楼梦" data-audio="sample-yueju.mp3">
+      <div class="sample-genre">越剧</div><div class="sample-title">红楼梦</div><div class="sample-line">天上掉下个林妹妹</div>
+    </div>
+    <div class="sample-card sample-card-red" data-q="红色沙家浜" data-audio="sample-red-jingju.mp3">
+      <div class="sample-genre">红色</div><div class="sample-title">沙家浜·智斗</div><div class="sample-line">垒起七星灶，铜壶煮三江</div>
+    </div>
+  </div>
+  <div class="creation-panel">
+    <h3>我的创作</h3>
+    <p id="creationText">完成后，这里会按角色展示唱词、念白与舞台提示。作品可在本机保存，也可以复制成文本继续排演和修改。</p>
+  </div>
+</div></section>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand"><span class="brand-mark">戏</span><span>数智·戏曲润心</span></div>
+        <p class="footer-desc">以中华优秀传统戏曲为内核，以数字工具拓展基层文化服务的参与方式。</p>
+        <div class="footer-political">
+          <span class="ppill">传统文化活化</span><span class="ppill">数智赋能</span><span class="ppill">基层实践</span><span class="ppill">文明互鉴</span>
+        </div>
+      </div>
+      <div>
+        <h5>平台入口</h5>
+        <ul>
+          <li><a href="../pages/ai-opera.html">戏曲共创工坊</a></li>
+          <li><a href="../pages/kids.html">儿童戏曲知识专区</a></li>
+          <li><a href="../pages/elderly.html">老人陪伴式戏曲演员</a></li>
+          <li><a href="../pages/red-opera.html">红色戏曲传唱</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>项目档案</h5>
+        <ul>
+          <li>类型：暑期社会实践</li>
+          <li>阵地：新时代文明实践站</li>
+          <li>形态：线上体验 + 线下微课堂</li>
+          <li>版本：参赛展示与试点体验版</li>
+          <li><a href="../pages/notice.html">内容与使用说明</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 数智·戏曲润心 项目组 · 让传统文化在当代生活中自然生长</p>
+      <p class="footer-tech">在线生成能力由服务端安全调用；服务未配置时自动使用本地体验内容。</p>
+    </div>
+  </div>
+</footer>
+<div class="global-player" id="globalPlayer" hidden>
+  <div class="gp-title" id="gpTitle">正在播放</div>
+  <button class="gp-toggle" id="gpToggle" aria-label="播放/暂停">
+    <svg viewBox="0 0 24 24" id="gpPlayIcon"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+    <svg viewBox="0 0 24 24" id="gpPauseIcon" hidden><path d="M6 5h4v14H6zM14 5h4v14h-4z" fill="currentColor"/></svg>
+  </button>
+  <button class="gp-close" id="gpClose" aria-label="关闭">×</button>
+  <audio id="gpAudio"></audio>
+</div>
+<script src="../js/shared.js"></script>
+<script src="../js/opera-page.js"></script>
+</body>
+</html>

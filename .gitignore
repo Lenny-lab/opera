@@ -1,0 +1,20 @@
+.env
+.env.*
+!.env.example
+server-*.out.txt
+server-*.err.txt
+node_modules/
+
+# Local working materials; not part of the public website release
+/GPT生成图片/
+/minimax生成图片/
+/prompts/
+/screenshots/
+/site.zip
+/fe7fd1f551b403395334e3f23d9b20d8.jpg
+/1+1}
+/*.docx
+/scripts/build_multipage_site.py
+
+# WebP is the published image format; retain PNG sources locally only
+/site/assets/images/**/*.png

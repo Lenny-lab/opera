@@ -1,0 +1,14 @@
+{
+  "name": "opera-community-platform",
+  "version": "1.0.0",
+  "private": true,
+  "description": "数智赋能·戏曲润心——戏曲文化共创实践平台",
+  "scripts": {
+    "start": "node scripts/serve_site.js",
+    "check": "node --check scripts/serve_site.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "UNLICENSED"
+}

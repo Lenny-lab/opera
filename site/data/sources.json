@@ -1,0 +1,16 @@
+{
+  "updated": "2026-07-10",
+  "principle": "页面素材需记录来源、授权范围与用途；人物原型和真人声音须取得明确授权后方可用于公开传播。",
+  "visual_assets": [
+    { "file": "illustrations/hero-stage.webp", "source": "项目组使用 GPT 生成", "use": "首页与共创工坊主视觉" },
+    { "file": "illustrations/elderly-companion.webp", "source": "项目组使用 GPT 生成", "use": "长者陪伴场景" },
+    { "file": "illustrations/kids-classroom.webp", "source": "项目组使用 GPT 生成", "use": "儿童课堂场景" },
+    { "file": "illustrations/cultural-exchange.webp", "source": "项目组使用 GPT 生成", "use": "文明互鉴场景" },
+    { "file": "illustrations/red-opera.webp", "source": "项目组使用 GPT 生成", "use": "红色戏曲场景" },
+    { "file": "illustrations/live-with-ai.webp", "source": "项目组使用 GPT 生成", "use": "线下共演概念场景" },
+    { "file": "characters/sheng.webp", "source": "项目组使用 GPT 生成", "use": "生行形象导赏" },
+    { "file": "characters/dan.webp", "source": "项目组使用 GPT 生成", "use": "旦行形象导赏" },
+    { "file": "characters/jing.webp", "source": "项目组使用 GPT 生成", "use": "净行形象导赏" }
+  ],
+  "audio_note": "现有音频仅用于项目试点体验。公开上线前应补齐逐条来源、版权状态、授权凭证与使用期限。"
+}
