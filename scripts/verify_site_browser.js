@@ -52,8 +52,14 @@ function intersects(a, b) {
   if (kids.tracks !== 4 || kids.buttons !== 4) throw new Error(`Kids audio failed: ${JSON.stringify(kids)}`);
 
   await page.goto(`${BASE}/pages/red-opera.html`, { waitUntil: 'networkidle' });
-  const red = await page.evaluate(() => ({ audio: document.querySelectorAll('[data-global-audio]').length }));
-  if (red.audio !== 2) throw new Error(`Red audio failed: ${JSON.stringify(red)}`);
+  const red = await page.evaluate(() => ({
+    audio: document.querySelectorAll('[data-global-audio]').length,
+    groups: document.querySelectorAll('.red-audio-group').length,
+    width: document.documentElement.scrollWidth,
+    viewport: window.innerWidth,
+  }));
+  if (red.audio !== 14 || red.groups !== 4 || red.width > red.viewport) throw new Error(`Red audio failed: ${JSON.stringify(red)}`);
+  await page.screenshot({ path: path.join(OUT, 'red-opera-all-tracks.png'), fullPage: true });
 
   await page.goto(`${BASE}/pages/characters/sheng.html`, { waitUntil: 'networkidle' });
   const videos = await page.evaluate(() => document.querySelectorAll('.video-card').length);
@@ -75,8 +81,18 @@ function intersects(a, b) {
   const mobileHub = await page.evaluate(() => ({ columns: getComputedStyle(document.querySelector('.case-hub-grid')).gridTemplateColumns, width: document.documentElement.scrollWidth, viewport: innerWidth }));
   if (mobileHub.width > mobileHub.viewport) throw new Error(`Mobile hub overflow: ${JSON.stringify(mobileHub)}`);
 
+  await page.goto(`${BASE}/pages/red-opera.html`, { waitUntil: 'networkidle' });
+  const mobileRed = await page.evaluate(() => ({
+    audio: document.querySelectorAll('[data-global-audio]').length,
+    columns: getComputedStyle(document.querySelector('.audio-catalog')).gridTemplateColumns,
+    width: document.documentElement.scrollWidth,
+    viewport: innerWidth,
+  }));
+  if (mobileRed.audio !== 14 || mobileRed.width > mobileRed.viewport) throw new Error(`Mobile red audio failed: ${JSON.stringify(mobileRed)}`);
+  await page.screenshot({ path: path.join(OUT, 'red-opera-mobile.png'), fullPage: true });
+
   if (errors.length || failedLocal.length) throw new Error(`Browser errors=${JSON.stringify(errors)} localFailures=${JSON.stringify(failedLocal)}`);
-  console.log(JSON.stringify({ ok: true, out: OUT, home, hub, article, kids, red, videos, mobile, mobileHub }, null, 2));
+  console.log(JSON.stringify({ ok: true, out: OUT, home, hub, article, kids, red, videos, mobile, mobileHub, mobileRed }, null, 2));
   await browser.close();
 })().catch(async error => {
   console.error(error.stack || error.message);
