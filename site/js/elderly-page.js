@@ -14,12 +14,10 @@
 
   // ==================== 剧种按钮 ====================
   const INTENT_KEYWORDS = [
-    { kws: ['京剧', '贵妃', '梅兰芳', '京'], audio: 'sample-jingju.mp3', label: '京剧《贵妃醉酒》' },
-    { kws: ['豫剧', '花木兰', '木兰', '豫', '常香玉'], audio: 'sample-yuju.mp3', label: '豫剧《花木兰》' },
-    { kws: ['越剧', '红楼梦', '林妹妹', '越', '林黛玉'], audio: 'sample-yueju.mp3', label: '越剧《红楼梦》' },
-    { kws: ['黄梅', '天仙', '七仙女', '黄'], audio: 'sample-huangmei.mp3', label: '黄梅戏《天仙配》' },
-    { kws: ['红色', '革命', '沙家浜', '抗战', '智斗', '现代戏'], audio: 'sample-red-jingju.mp3', label: '红色京剧《沙家浜》' },
-    { kws: ['朝阳沟', '下乡', '知青'], audio: 'sample-red-yuju.mp3', label: '红色豫剧《朝阳沟》' }
+    { kws: ['京剧', '霸王', '虞姬', '京'], audio: 'elderly-bawang-bieji.mp3', label: '京剧《霸王别姬》' },
+    { kws: ['豫剧', '花木兰', '木兰', '豫'], audio: 'elderly-hua-mulan.mp3', label: '豫剧《花木兰》' },
+    { kws: ['越剧', '孟丽君', '丽君', '越'], audio: 'elderly-meng-li-jun.mp3', label: '越剧《孟丽君》' },
+    { kws: ['黄梅', '天仙配', '七仙女', '黄'], audio: 'elderly-tian-xian-pei.mp3', label: '黄梅戏《天仙配》' }
   ];
 
   function matchIntent(text) {

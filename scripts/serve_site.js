@@ -32,7 +32,9 @@ function setSecurityHeaders(res) {
     'Content-Security-Policy',
     "default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
     "font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; " +
-    "connect-src 'self'; script-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'self'"
+    "connect-src 'self'; script-src 'self'; " +
+    "frame-src https://player.bilibili.com https://www.bilibili.com https://tv.cctv.com https://haokan.baidu.com https://www.toutiao.com; " +
+    "object-src 'none'; base-uri 'self'; frame-ancestors 'self'"
   );
 }
 

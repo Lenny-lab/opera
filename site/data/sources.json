@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-10",
+  "updated": "2026-08-02",
   "principle": "页面素材需记录来源、授权范围与用途；人物原型和真人声音须取得明确授权后方可用于公开传播。",
   "visual_assets": [
     { "file": "illustrations/hero-stage.webp", "source": "项目组使用 GPT 生成", "use": "首页与共创工坊主视觉" },
@@ -10,7 +10,10 @@
     { "file": "illustrations/live-with-ai.webp", "source": "项目组使用 GPT 生成", "use": "线下共演概念场景" },
     { "file": "characters/sheng.webp", "source": "项目组使用 GPT 生成", "use": "生行形象导赏" },
     { "file": "characters/dan.webp", "source": "项目组使用 GPT 生成", "use": "旦行形象导赏" },
-    { "file": "characters/jing.webp", "source": "项目组使用 GPT 生成", "use": "净行形象导赏" }
+    { "file": "characters/jing.webp", "source": "项目组使用 GPT 生成", "use": "净行形象导赏" },
+    { "file": "home-characters/*.png", "source": "项目组提供的项目 IP", "use": "首页生旦净丑悬浮形象" },
+    { "file": "cases/*", "source": "项目组线下实践记录", "use": "四站实践纪实封面与正文照片" }
   ],
-  "audio_note": "现有音频仅用于项目试点体验。公开上线前应补齐逐条来源、版权状态、授权凭证与使用期限。"
+  "audio_note": "A/B/C/D 四组共 14 段音频由项目组提供，仅用于项目试点体验。公开上线前应补齐逐条来源、版权状态、授权凭证与使用期限。",
+  "external_video_note": "人物与剧种详情页的 28 条视频来自第三方公开页面，需联网加载；本站不下载或重新托管。"
 }

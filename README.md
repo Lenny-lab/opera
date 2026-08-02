@@ -14,11 +14,17 @@ node scripts/serve_site.js
 
 未配置在线生成服务时，网站会自动使用本地体验内容。服务端配置、安全边界和上线检查请查看 [site/README.md](site/README.md)。
 
+## Vercel 部署
+
+从 GitHub 导入本仓库时选择 `Other`，将 Root Directory 设置为 `site`，构建、输出和安装命令均留空。若需启用在线共创，在 Vercel 的 Environment Variables 中配置新的 `DEEPSEEK_API_KEY`。详细设置见 [site/README.md](site/README.md)。
+
 ## 主要目录
 
 - `site/`：网站页面、样式、交互、图片和音频资源
 - `scripts/serve_site.js`：静态站点与生成接口服务
 - `scripts/audit_site.py`：页面链接、资源和敏感信息检查
+- `scripts/integrate_supplemental_assets.py`：把补充音频、项目 IP 与案例照片归入站点资源
+- `scripts/build_case_pages.py`：从四篇原始 DOCX 重新生成线下实践文章页
 - `prompts/`：视觉素材生成提示词留档
 - `screenshots/`：各版本页面验证截图
 

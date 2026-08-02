@@ -5,11 +5,10 @@
 
   // ==================== 本地样本库（仅作 fallback）====================
   const SAMPLES = [
-    { id: 'jingju-guifei', genre: '京剧', title: '贵妃醉酒', role: '旦 · 梅派', audio: '../assets/audio/sample-jingju.mp3', desc: '梅兰芳大师代表作，京剧旦角经典。', tags: ['梅兰芳', '经典', '旦角'], scene: '宫廷月夜', keywords: ['京剧', '贵妃', '醉酒', '梅兰芳', '旦', '海岛冰轮'], character: '旦', color: '#c8161d' },
-    { id: 'yuju-huamulan', genre: '豫剧', title: '花木兰', role: '旦 · 常派', audio: '../assets/audio/sample-yuju.mp3', desc: '常香玉代表作。', tags: ['常香玉', '花木兰'], scene: '军旅边塞', keywords: ['豫剧', '花木兰', '木兰', '军旅'], character: '旦', color: '#c8161d' },
-    { id: 'yueju-hongloumeng', genre: '越剧', title: '红楼梦', role: '旦 · 徐派', audio: '../assets/audio/sample-yueju.mp3', desc: '徐玉兰、王文娟代表作。', tags: ['红楼梦', '林黛玉'], scene: '大观园', keywords: ['越剧', '红楼梦', '林妹妹'], character: '旦', color: '#c8161d' },
-    { id: 'red-shajiabang', genre: '红色京剧', title: '沙家浜 · 智斗', role: '生 · 现代戏', audio: '../assets/audio/sample-red-jingju.mp3', desc: '革命现代戏经典。', tags: ['革命', '红色'], scene: '春来茶馆', keywords: ['红色', '沙家浜', '智斗', '革命'], character: '生', color: '#8b0000' },
-    { id: 'red-chaoyanggou', genre: '红色豫剧', title: '朝阳沟', role: '旦 · 现代戏', audio: '../assets/audio/sample-red-yuju.mp3', desc: '现代豫剧经典。', tags: ['现代戏'], scene: '朝阳沟', keywords: ['红色', '朝阳沟', '下乡', '知青'], character: '旦', color: '#8b0000' }
+    { id: 'jingju-bawang', genre: '京剧', title: '霸王别姬', role: '旦 · 经典剧目', audio: '../assets/audio/workshop-bawang-bieji.mp3', desc: '以霸王与虞姬的诀别为核心，唱做并重，人物情感浓烈。', tags: ['霸王别姬', '京剧', '旦角'], scene: '楚帐夜深', keywords: ['京剧', '霸王', '虞姬', '霸王别姬', '旦'], character: '旦', color: '#c8161d' },
+    { id: 'yuju-huamulan', genre: '豫剧', title: '花木兰', role: '旦 · 经典剧目', audio: '../assets/audio/workshop-hua-mulan.mp3', desc: '围绕花木兰替父从军的故事展开，语言明快，人物刚柔相济。', tags: ['花木兰', '豫剧', '家国'], scene: '军旅边塞', keywords: ['豫剧', '花木兰', '木兰', '军旅'], character: '旦', color: '#c8161d' },
+    { id: 'yueju-hongloumeng', genre: '越剧', title: '红楼梦', role: '越剧 · 经典剧目', audio: '../assets/audio/workshop-hong-lou-meng.mp3', desc: '以细腻抒情的唱腔表现人物情感与大观园中的悲欢离合。', tags: ['红楼梦', '越剧', '抒情'], scene: '大观园', keywords: ['越剧', '红楼梦', '林妹妹', '林黛玉'], character: '旦', color: '#c8161d' },
+    { id: 'red-shajiabang', genre: '现代京剧', title: '沙家浜', role: '现代戏 · 群像', audio: '../assets/audio/workshop-sha-jia-bang.mp3', desc: '以抗战时期的军民故事为背景，通过鲜明人物关系推进戏剧冲突。', tags: ['沙家浜', '现代京剧', '红色'], scene: '芦荡与茶馆', keywords: ['红色', '沙家浜', '智斗', '革命'], character: '生', color: '#8b0000' }
   ];
 
   // ==================== 状态徽章 ====================
