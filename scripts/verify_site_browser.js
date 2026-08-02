@@ -16,10 +16,12 @@ function intersects(a, b) {
   const page = await context.newPage();
   const errors = [];
   const failedLocal = [];
+  const audioResponses = [];
   page.on('console', message => { if (message.type() === 'error') errors.push(message.text()); });
   page.on('pageerror', error => errors.push(error.message));
   page.on('response', response => {
     if (response.url().startsWith(BASE) && response.status() >= 400) failedLocal.push(`${response.status()} ${response.url()}`);
+    if (/\.mp3(?:\?|$)/i.test(response.url())) audioResponses.push({ url: response.url(), status: response.status(), type: response.headers()['content-type'] || '' });
   });
 
   await page.goto(`${BASE}/`, { waitUntil: 'networkidle' });
@@ -59,6 +61,50 @@ function intersects(a, b) {
     viewport: window.innerWidth,
   }));
   if (red.audio !== 14 || red.groups !== 4 || red.width > red.viewport) throw new Error(`Red audio failed: ${JSON.stringify(red)}`);
+  const redSources = await page.evaluate(() => [...document.querySelectorAll('[data-global-audio]')].map(button => button.dataset.globalAudio));
+  const redMediaChecks = [];
+  for (const source of redSources) {
+    const result = await page.evaluate(src => new Promise(resolve => {
+      const probe = new Audio();
+      const finish = (ok, detail) => {
+        probe.removeAttribute('src');
+        probe.load();
+        resolve({ source: src, ok, detail });
+      };
+      const timer = setTimeout(() => finish(false, 'timeout'), 12000);
+      probe.preload = 'metadata';
+      probe.addEventListener('loadedmetadata', () => {
+        clearTimeout(timer);
+        finish(true, Number.isFinite(probe.duration) ? probe.duration : null);
+      }, { once: true });
+      probe.addEventListener('error', () => {
+        clearTimeout(timer);
+        finish(false, probe.error?.code || 'media-error');
+      }, { once: true });
+      probe.src = new URL(src, document.baseURI).href;
+      probe.load();
+    }), source);
+    redMediaChecks.push(result);
+  }
+  const failedRedMedia = redMediaChecks.filter(item => !item.ok);
+  if (failedRedMedia.length) throw new Error(`Red media decode failed: ${JSON.stringify(failedRedMedia)}`);
+  await page.click('[data-global-audio]');
+  await page.waitForFunction(() => {
+    const audio = document.querySelector('#gpAudio');
+    return audio && (audio.readyState >= 2 || audio.error);
+  }, null, { timeout: 15000 }).catch(() => {});
+  const redPlayback = await page.evaluate(() => {
+    const audio = document.querySelector('#gpAudio');
+    return {
+      currentSrc: audio?.currentSrc || '',
+      readyState: audio?.readyState,
+      networkState: audio?.networkState,
+      paused: audio?.paused,
+      duration: Number.isFinite(audio?.duration) ? audio.duration : null,
+      error: audio?.error ? { code: audio.error.code, message: audio.error.message } : null,
+    };
+  });
+  if (redPlayback.error || redPlayback.readyState < 2) throw new Error(`Red audio playback failed: ${JSON.stringify({ redPlayback, audioResponses })}`);
   await page.screenshot({ path: path.join(OUT, 'red-opera-all-tracks.png'), fullPage: true });
 
   await page.goto(`${BASE}/pages/characters/sheng.html`, { waitUntil: 'networkidle' });
@@ -92,7 +138,7 @@ function intersects(a, b) {
   await page.screenshot({ path: path.join(OUT, 'red-opera-mobile.png'), fullPage: true });
 
   if (errors.length || failedLocal.length) throw new Error(`Browser errors=${JSON.stringify(errors)} localFailures=${JSON.stringify(failedLocal)}`);
-  console.log(JSON.stringify({ ok: true, out: OUT, home, hub, article, kids, red, videos, mobile, mobileHub, mobileRed }, null, 2));
+  console.log(JSON.stringify({ ok: true, out: OUT, home, hub, article, kids, red, redMediaChecks, redPlayback, audioResponses, videos, mobile, mobileHub, mobileRed }, null, 2));
   await browser.close();
 })().catch(async error => {
   console.error(error.stack || error.message);

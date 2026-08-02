@@ -2603,9 +2603,14 @@ input { font-family: inherit; }
 .case-byline { padding-top: 20px; border-top: 1px solid rgba(139,0,0,.12); font-weight: 700; }
 
 /* ===== 首页悬浮项目 IP ===== */
-.home-pet-layer { position: absolute; inset: 0; z-index: 3; pointer-events: none; }
+.home-pet-layer { position: absolute; inset: 0; z-index: 3; pointer-events: none; overflow: hidden; }
+.home-pet-layer::before,
+.home-pet-layer::after { content: ""; position: absolute; top: 24%; width: 22%; height: 48%; opacity: .34; filter: blur(8px); }
+.home-pet-layer::before { left: -6%; background: radial-gradient(ellipse at left, rgba(213,43,35,.48), rgba(255,196,81,.12) 48%, transparent 72%); }
+.home-pet-layer::after { right: -6%; background: radial-gradient(ellipse at right, rgba(39,181,191,.36), rgba(255,196,81,.1) 48%, transparent 72%); }
 .home-pet {
   --pet-width: 126px;
+  --pet-tilt: 0deg;
   position: absolute;
   width: var(--pet-width);
   padding: 0;
@@ -2613,23 +2618,33 @@ input { font-family: inherit; }
   background: transparent;
   cursor: pointer;
   pointer-events: auto;
+  transform-origin: 50% 92%;
   filter: drop-shadow(0 14px 14px rgba(0,0,0,.34));
   animation: pet-float 4.8s ease-in-out infinite;
 }
+.home-pet::after { content: ""; position: absolute; left: 16%; right: 16%; bottom: 1%; height: 12px; z-index: -1; border-radius: 50%; background: rgba(0,0,0,.34); filter: blur(6px); transform: scaleX(.88); }
 .home-pet-crop { display: block; width: 100%; overflow: hidden; }
 .home-pet img { display: block; width: 100%; height: auto; }
-.home-pet-sheng { left: 2.2%; top: 18%; animation-delay: -.6s; }
-.home-pet-dan { left: 4.2%; bottom: 8%; animation-delay: -2.2s; }
-.home-pet-jing { right: 2.2%; top: 17%; animation-delay: -1.4s; }
-.home-pet-chou { right: 4.1%; bottom: 7%; animation-delay: -3.1s; }
+.home-pet-sheng { --pet-width: 150px; --pet-tilt: -2deg; left: 2.6%; top: 29%; z-index: 3; animation-delay: -.6s; }
+.home-pet-dan { --pet-width: 124px; --pet-tilt: 3deg; left: 9.5%; top: 42%; z-index: 4; animation-delay: -2.2s; }
+.home-pet-jing { --pet-width: 154px; --pet-tilt: 2deg; right: 2.5%; top: 28%; z-index: 3; animation-delay: -1.4s; }
+.home-pet-chou { --pet-width: 126px; --pet-tilt: -4deg; right: 9.4%; top: 43%; z-index: 4; animation-delay: -3.1s; }
+.home-pet-sheng .home-pet-crop,
+.home-pet-dan .home-pet-crop { animation: pet-enter-left .85s cubic-bezier(.2,.85,.35,1) both; }
+.home-pet-jing .home-pet-crop,
+.home-pet-chou .home-pet-crop { animation: pet-enter-right .85s cubic-bezier(.2,.85,.35,1) both; }
+.home-pet-dan .home-pet-crop,
+.home-pet-chou .home-pet-crop { animation-delay: .16s; }
 .home-pet-sheng .home-pet-crop,
 .home-pet-dan .home-pet-crop { height: calc(var(--pet-width) * .98); }
 .home-pet-jing .home-pet-crop,
 .home-pet-chou .home-pet-crop { height: calc(var(--pet-width) * .84); }
 .home-pet.is-reacting { animation: pet-react .72s cubic-bezier(.2,.8,.3,1); }
-@keyframes pet-float { 0%,100% { transform: translateY(0) rotate(-1deg); } 50% { transform: translateY(-12px) rotate(1.5deg); } }
+@keyframes pet-float { 0%,100% { transform: translateY(0) rotate(var(--pet-tilt)); } 50% { transform: translateY(-12px) rotate(calc(var(--pet-tilt) + 2deg)); } }
 @keyframes pet-react { 0%,100% { transform: scale(1) rotate(0); } 35% { transform: scale(1.12) rotate(-7deg); } 65% { transform: scale(1.08) rotate(7deg); } }
 @keyframes pet-mobile-in { from { opacity: 0; transform: translateX(28px) scale(.84); } to { opacity: 1; transform: translateX(0) scale(1); } }
+@keyframes pet-enter-left { from { opacity: 0; transform: translateX(-45px) scale(.78); } to { opacity: 1; transform: translateX(0) scale(1); } }
+@keyframes pet-enter-right { from { opacity: 0; transform: translateX(45px) scale(.78); } to { opacity: 1; transform: translateX(0) scale(1); } }
 
 /* ===== 音频目录与全局播放器状态 ===== */
 .audio-catalog { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; margin-top: 30px; }
@@ -2640,6 +2655,7 @@ input { font-family: inherit; }
 .track-eyebrow { color: var(--c-red); font-size: 12px; font-weight: 700; letter-spacing: .08em; }
 .audio-play { border: 0; cursor: pointer; }
 .red-audio-group { margin-top: 38px; }
+.section-red .container > .red-audio-group:first-child { margin-top: 0; }
 .audio-group-head { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid rgba(139,0,0,.15); }
 .audio-group-head span { color: var(--c-red); font-size: 13px; font-weight: 700; letter-spacing: .08em; }
 .audio-group-head h3 { margin: 0; font-family: var(--f-display); font-size: 25px; color: var(--c-ink); }
@@ -2649,6 +2665,9 @@ input { font-family: inherit; }
 .red-co-create-panel p { margin: 0; color: var(--c-text-soft); }
 .gp-status { font-size: 12px; color: rgba(255,255,255,.78); }
 .global-player.is-error { background: #6f1115; }
+.global-player.is-loading .gp-toggle { opacity: .68; }
+.global-player.is-loading .gp-title { animation: player-loading 1.2s ease-in-out infinite alternate; }
+@keyframes player-loading { from { opacity: .62; } to { opacity: 1; } }
 
 /* ===== 第三方视频懒加载 ===== */
 .video-showcase { margin-top: 42px; }
@@ -2667,6 +2686,7 @@ input { font-family: inherit; }
 
 @media (max-width: 1100px) {
   .case-hub-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 58px; }
+  .home-pet-layer::before, .home-pet-layer::after { display: none; }
   .home-pet { display: none; --pet-width: 112px; }
   .home-pet.is-mobile-active { display: block; left: auto; right: 18px; top: auto; bottom: 22px; animation: pet-mobile-in .65s ease both, pet-float 4.8s 1s ease-in-out infinite; }
   .audio-catalog { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -2683,7 +2703,9 @@ input { font-family: inherit; }
 }
 @media (prefers-reduced-motion: reduce) {
   .home-pet,
-  .home-pet.is-mobile-active { animation: none; }
+  .home-pet.is-mobile-active,
+  .home-pet-crop,
+  .global-player.is-loading .gp-title { animation: none; }
   .case-hub-card,
   .audio-track-card { transition: none; }
 }
