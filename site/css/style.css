@@ -915,6 +915,18 @@ input { font-family: inherit; }
   margin-bottom: 6px;
 }
 .kid-card p { font-size: 13px; color: var(--c-text-soft); }
+.kids-role-intro { margin-bottom: 24px; text-align: center; }
+.kids-role-intro span { color: var(--c-red); font-size: 12px; font-weight: 700; letter-spacing: .16em; }
+.kids-role-intro h3 { margin: 8px 0; font-family: var(--f-display); font-size: 28px; color: var(--c-ink); }
+.kids-role-intro p { margin: 0; color: var(--c-text-soft); font-size: 14px; }
+.kid-role-card { overflow: hidden; padding: 0 20px 22px; }
+.kid-role-figure { position: relative; height: 240px; margin: 0 -20px 18px; overflow: hidden; background: radial-gradient(circle at 50% 68%, #fff8dc 0 27%, #ffe9cc 58%, #fbd6d1 100%); }
+.kid-role-figure::after { content: ""; position: absolute; left: 19%; right: 19%; bottom: 13px; height: 15px; border-radius: 50%; background: rgba(109,44,26,.16); filter: blur(7px); }
+.kid-role-figure img { position: relative; z-index: 1; display: block; width: 100%; height: 100%; object-fit: contain; object-position: center bottom; padding: 12px 18px 0; transition: transform .3s ease; }
+.kid-role-card:hover .kid-role-figure img { transform: translateY(-5px) rotate(-1deg); }
+.kid-role-figure span { position: absolute; z-index: 2; top: 14px; left: 14px; display: grid; width: 42px; height: 42px; place-items: center; border-radius: 50%; background: var(--c-red); color: #fff; font-family: var(--f-display); font-size: 22px; box-shadow: 0 7px 16px rgba(139,0,0,.22); }
+.kid-role-card h4 { margin-bottom: 8px; }
+.kid-role-card p { min-height: 66px; line-height: 1.7; }
 /* 剧种卡作为可点击链接 */
 .kid-card-link {
   display: block;
@@ -2603,48 +2615,32 @@ input { font-family: inherit; }
 .case-byline { padding-top: 20px; border-top: 1px solid rgba(139,0,0,.12); font-weight: 700; }
 
 /* ===== 首页悬浮项目 IP ===== */
-.home-pet-layer { position: absolute; inset: 0; z-index: 3; pointer-events: none; overflow: hidden; }
-.home-pet-layer::before,
-.home-pet-layer::after { content: ""; position: absolute; top: 24%; width: 22%; height: 48%; opacity: .34; filter: blur(8px); }
-.home-pet-layer::before { left: -6%; background: radial-gradient(ellipse at left, rgba(213,43,35,.48), rgba(255,196,81,.12) 48%, transparent 72%); }
-.home-pet-layer::after { right: -6%; background: radial-gradient(ellipse at right, rgba(39,181,191,.36), rgba(255,196,81,.1) 48%, transparent 72%); }
+.home-pet-layer { position: absolute; inset: 0; z-index: 4; pointer-events: none; overflow: hidden; }
 .home-pet {
-  --pet-width: 126px;
-  --pet-tilt: 0deg;
   position: absolute;
-  width: var(--pet-width);
+  right: clamp(18px, 3.6vw, 68px);
+  bottom: clamp(18px, 4vh, 46px);
+  width: clamp(172px, 17vw, 270px);
   padding: 0;
   border: 0;
   background: transparent;
   cursor: pointer;
   pointer-events: auto;
-  transform-origin: 50% 92%;
-  filter: drop-shadow(0 14px 14px rgba(0,0,0,.34));
-  animation: pet-float 4.8s ease-in-out infinite;
+  transform-origin: 58% 90%;
+  filter: drop-shadow(0 18px 18px rgba(0,0,0,.35));
+  animation: mascot-enter 1s cubic-bezier(.16,.82,.3,1) both, mascot-breathe 5.2s 1s ease-in-out infinite;
 }
-.home-pet::after { content: ""; position: absolute; left: 16%; right: 16%; bottom: 1%; height: 12px; z-index: -1; border-radius: 50%; background: rgba(0,0,0,.34); filter: blur(6px); transform: scaleX(.88); }
-.home-pet-crop { display: block; width: 100%; overflow: hidden; }
+.home-pet::after { content: ""; position: absolute; left: 18%; right: 7%; bottom: 6%; height: 18px; z-index: -1; border-radius: 50%; background: rgba(0,0,0,.34); filter: blur(8px); transform: scaleX(.9); }
+.home-pet-halo { position: absolute; inset: 17% -8% 4% 12%; z-index: -1; border-radius: 48%; background: radial-gradient(circle at 58% 55%, rgba(255,224,147,.34), rgba(200,22,29,.12) 48%, transparent 72%); filter: blur(5px); animation: mascot-halo 3.8s ease-in-out infinite; }
+.home-pet-crop { display: block; width: 100%; }
 .home-pet img { display: block; width: 100%; height: auto; }
-.home-pet-sheng { --pet-width: 150px; --pet-tilt: -2deg; left: 2.6%; top: 29%; z-index: 3; animation-delay: -.6s; }
-.home-pet-dan { --pet-width: 124px; --pet-tilt: 3deg; left: 9.5%; top: 42%; z-index: 4; animation-delay: -2.2s; }
-.home-pet-jing { --pet-width: 154px; --pet-tilt: 2deg; right: 2.5%; top: 28%; z-index: 3; animation-delay: -1.4s; }
-.home-pet-chou { --pet-width: 126px; --pet-tilt: -4deg; right: 9.4%; top: 43%; z-index: 4; animation-delay: -3.1s; }
-.home-pet-sheng .home-pet-crop,
-.home-pet-dan .home-pet-crop { animation: pet-enter-left .85s cubic-bezier(.2,.85,.35,1) both; }
-.home-pet-jing .home-pet-crop,
-.home-pet-chou .home-pet-crop { animation: pet-enter-right .85s cubic-bezier(.2,.85,.35,1) both; }
-.home-pet-dan .home-pet-crop,
-.home-pet-chou .home-pet-crop { animation-delay: .16s; }
-.home-pet-sheng .home-pet-crop,
-.home-pet-dan .home-pet-crop { height: calc(var(--pet-width) * .98); }
-.home-pet-jing .home-pet-crop,
-.home-pet-chou .home-pet-crop { height: calc(var(--pet-width) * .84); }
-.home-pet.is-reacting { animation: pet-react .72s cubic-bezier(.2,.8,.3,1); }
-@keyframes pet-float { 0%,100% { transform: translateY(0) rotate(var(--pet-tilt)); } 50% { transform: translateY(-12px) rotate(calc(var(--pet-tilt) + 2deg)); } }
-@keyframes pet-react { 0%,100% { transform: scale(1) rotate(0); } 35% { transform: scale(1.12) rotate(-7deg); } 65% { transform: scale(1.08) rotate(7deg); } }
-@keyframes pet-mobile-in { from { opacity: 0; transform: translateX(28px) scale(.84); } to { opacity: 1; transform: translateX(0) scale(1); } }
-@keyframes pet-enter-left { from { opacity: 0; transform: translateX(-45px) scale(.78); } to { opacity: 1; transform: translateX(0) scale(1); } }
-@keyframes pet-enter-right { from { opacity: 0; transform: translateX(45px) scale(.78); } to { opacity: 1; transform: translateX(0) scale(1); } }
+.home-pet:hover { filter: drop-shadow(0 22px 22px rgba(0,0,0,.42)) brightness(1.04); }
+.home-pet:focus-visible { outline: 3px solid #ffd36a; outline-offset: 7px; border-radius: 42%; }
+.home-pet.is-reacting { animation: mascot-react .76s cubic-bezier(.18,.78,.3,1); }
+@keyframes mascot-enter { from { opacity: 0; transform: translate(55%, 22%) scale(.72) rotate(7deg); } to { opacity: 1; transform: translate(0, 0) scale(1) rotate(0); } }
+@keyframes mascot-breathe { 0%,100% { transform: translateY(0) rotate(0); } 48% { transform: translateY(-12px) rotate(-1.8deg); } 58% { transform: translateY(-10px) rotate(1deg); } }
+@keyframes mascot-halo { 0%,100% { opacity: .7; transform: scale(.96); } 50% { opacity: 1; transform: scale(1.04); } }
+@keyframes mascot-react { 0%,100% { transform: translateY(0) scale(1) rotate(0); } 35% { transform: translateY(-16px) scale(1.07) rotate(-5deg); } 68% { transform: translateY(-8px) scale(1.04) rotate(4deg); } }
 
 /* ===== 音频目录与全局播放器状态 ===== */
 .audio-catalog { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; margin-top: 30px; }
@@ -2652,6 +2648,7 @@ input { font-family: inherit; }
 .audio-track-card.is-playing { border-color: var(--c-red); box-shadow: 0 0 0 3px rgba(200,22,29,.12), var(--shadow-md); transform: translateY(-3px); }
 .audio-track-card h3 { margin: 8px 0; font-family: var(--f-display); font-size: 20px; color: var(--c-ink); }
 .audio-track-card p { min-height: 50px; margin-bottom: 16px; color: var(--c-text-soft); font-size: 13px; line-height: 1.7; }
+.audio-track-card .track-quote { min-height: 0; margin: -3px 0 16px; padding: 10px 12px; border-left: 3px solid var(--c-gold); background: #fff8e7; color: #6e4d32; font-family: var(--f-serif); }
 .track-eyebrow { color: var(--c-red); font-size: 12px; font-weight: 700; letter-spacing: .08em; }
 .audio-play { border: 0; cursor: pointer; }
 .red-audio-group { margin-top: 38px; }
@@ -2686,9 +2683,7 @@ input { font-family: inherit; }
 
 @media (max-width: 1100px) {
   .case-hub-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 58px; }
-  .home-pet-layer::before, .home-pet-layer::after { display: none; }
-  .home-pet { display: none; --pet-width: 112px; }
-  .home-pet.is-mobile-active { display: block; left: auto; right: 18px; top: auto; bottom: 22px; animation: pet-mobile-in .65s ease both, pet-float 4.8s 1s ease-in-out infinite; }
+  .home-pet { right: 16px; bottom: 18px; width: clamp(138px, 21vw, 190px); }
   .audio-catalog { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 720px) {
@@ -2699,12 +2694,12 @@ input { font-family: inherit; }
   .case-article-hero { min-height: 450px; margin-top: 62px; }
   .case-article > p { font-size: 16px; line-height: 1.95; text-align: left; }
   .case-article > h2 { font-size: 25px; }
-  .home-pet { --pet-width: 96px; right: 10px !important; bottom: 18px !important; }
+  .home-pet { right: -10px; bottom: 12px; width: 132px; }
+  .kid-role-figure { height: 270px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .home-pet,
-  .home-pet.is-mobile-active,
-  .home-pet-crop,
+  .home-pet-halo,
   .global-player.is-loading .gp-title { animation: none; }
   .case-hub-card,
   .audio-track-card { transition: none; }
